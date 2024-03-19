@@ -77,6 +77,16 @@ const GameBoard = () => {
 
   return (
     <View style={styles.container}>
+       <View style={styles.rectangleGroup}>
+            <View style={styles.rectangleView} />
+            <Text style={styles.o1}>O</Text>
+            <Text style={styles.player1}>PLAYER 1</Text>
+        </View>
+          <View style={styles.frame6}>
+            <View style={styles.backToMenuWrapper}>
+              <Text style={styles.backToMenu}>BACK TO MENU</Text>
+            </View>
+          </View>
   <View style={styles.row}>
     <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(0)}>
       <Text style={styles.text}>{board[0]}</Text>
@@ -119,23 +129,102 @@ const GameBoard = () => {
   
 
 const styles = StyleSheet.create({
-  container: {
+  container: { 
     flex: 1,
-    marginTop: '50%',
     backgroundColor: '#001848',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+  },
+  rectangleView: {
+    position: "absolute",
+    marginTop : 10,
+    marginLeft: 10,
+    borderRadius: 15,
+    backgroundColor: "#0086f4",
+    width: 100,
+    height: 100,
+  },
+  o1: {
+    
+    fontSize: 70,
+    lineHeight: 84,
+    fontStyle: "italic",
+    fontWeight: "800",
+    fontFamily: "Inter-ExtraBold",
+    color: "#e94141",
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 70,
+    height: 70,
+    marginLeft: 15,
+    marginTop: 12,
+  },
+  player1: {
+    
+    fontSize: 20,
+    lineHeight: 24,
+    fontStyle: "italic",
+    fontWeight: "800",
+    fontFamily: "Inter-ExtraBold",
+    color: "#000",
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
+    width: 125,
+    height: 33,
+  },
+  rectangleGroup: {
+    borderRadius: 15,
+    padding: 5,
+    backgroundColor: "#d9d9d9",
+    width: 120,
+    height: 150,
+    alignSelf: "flex-start",
+    marginLeft: 20,
+  },
+
+  backToMenu: {
+    fontSize: 15,
+    lineHeight: 8,
+    fontWeight: "700",
+    fontFamily: "Jura-Bold",
+    color: "#003190",
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 137,
+    height: 27,
+  },
+  backToMenuWrapper: {
+    marginTop: 10,
+    borderRadius: 50,
+    backgroundColor: "#f7b731",
+    width: 195,
+    height: 41,
+  },
+
+  frame6: {
+    position: "absolute",
+    top: 18,
+    left: 18,
+    width: 389,
+    height: 41,
+    overflow: "hidden",
   },
   row: {
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
-    marginVertical: 5,
   },
   cell: {
     flex: 1,
-    aspectRatio: 1,
-    borderWidth: 1,
+    margin: 6,
+    aspectRatio: 1.1,
     backgroundColor : '#F9EFEF',
     borderColor: '#ccc',
     alignItems: 'center',
