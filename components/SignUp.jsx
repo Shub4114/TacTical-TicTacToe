@@ -1,14 +1,31 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignupPage = ({ navigation }) => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const handleSignup = () => {
-    // Handle signup logic here
+ const handleSignup = async () => {
+    try {
+      // Validate input fields (you can add more validation logic here)
+      if (!name || !email || !password) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Store user data in AsyncStorage
+      await AsyncStorage.setItem('name', name);
+      await AsyncStorage.setItem('email', email);
+      await AsyncStorage.setItem('password', password);
+
+      // Navigate to the next screen (you can replace 'AppMenu' with your desired screen)
+      navigation.navigate('AppMenu');
+    } catch (error) {
+      console.error('Error signing up:', error);
+    }
   };
 
   return (
