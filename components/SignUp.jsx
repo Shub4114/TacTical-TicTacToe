@@ -34,7 +34,7 @@ const SignupPage = ({ navigation }) => {
         leftIcon={{ type: 'font-awesome', name: 'lock' }}
       />
       <Button title="Sign Up" onPress={handleSignup} />
-      <Button title="Already have an account? Log in" onPress={() => navigation.navigate('AppMenu')} type="clear" />
+      <Button title="Already have an account? Log in" onPress={() => navigation.navigate('LoginPage')} type="clear" />
     </View>
   );
 };

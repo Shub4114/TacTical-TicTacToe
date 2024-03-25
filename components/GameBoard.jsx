@@ -4,6 +4,7 @@ import GameResult from './GameResult';
 import { useNavigation } from '@react-navigation/native';
 import { nativeViewGestureHandlerProps } from 'react-native-gesture-handler/lib/typescript/handlers/NativeViewGestureHandler';
 import { StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
 
 const GameBoard = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -76,51 +77,66 @@ const GameBoard = () => {
       };
 
   return (
-    <View style={styles.container}>
-       <View style={styles.rectangleGroup}>
-            <View style={styles.rectangleView} />
-            <Text style={styles.o1}>O</Text>
-            <Text style={styles.player1}>PLAYER 1</Text>
-        </View>
-          <View style={styles.frame6}>
-            <View style={styles.backToMenuWrapper}>
-              <Text style={styles.backToMenu}>BACK TO MENU</Text>
+    <View style={styles.gameBoard} >
+      <View style={styles.container}>
+      <View style={styles.groupContainer}>
+            <View style={styles.rectangleGroup}>
+              <View style={styles.groupItem} />
+              <Text style={styles.o}>O</Text>
             </View>
-          </View>
-  <View style={styles.row}>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(0)}>
-      <Text style={styles.text}>{board[0]}</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(1)}>
-      <Text style={styles.text}>{board[1]}</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(2)}>
-      <Text style={styles.text}>{board[2]}</Text>
-    </TouchableOpacity>
+            <Text style={styles.player1}>PLAYER 1</Text>
+      </View>
+      <View style={styles.groupContainerX}>
+            <View style={styles.rectangleGroupX}>
+              <View style={styles.groupItemX} />
+              <Text style={styles.X}>X</Text>
+            </View>
+            <Text style={styles.player2}>PLAYER 2</Text>
+      </View>
+      <Button title="BACK TO MENU"
+        radius={5}
+        iconPosition="left"
+        type="solid"
+        color="#f7b731"
+        titleStyle={styles.backToMenuBtn}
+        containerStyle={styles.backToMenuBtn1}
+        buttonStyle={styles.backToMenuBtn2}> </Button>
+      
+        <View style={styles.row}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(0)}>
+            <Text style={styles.text}>{board[0]}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(1)}>
+            <Text style={styles.text}>{board[1]}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(2)}>
+            <Text style={styles.text}>{board[2]}</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.row}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(3)}>
+            <Text style={styles.text}>{board[3]}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(4)}>
+            <Text style={styles.text}>{board[4]}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(5)}>
+            <Text style={styles.text}>{board[5]}</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.row}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(6)}>
+            <Text style={styles.text}>{board[6]}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(7)}>
+            <Text style={styles.text}>{board[7]}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(8)}>
+            <Text style={styles.text}>{board[8]}</Text>
+          </TouchableOpacity>
+        </View>
   </View>
-  <View style={styles.row}>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(3)}>
-      <Text style={styles.text}>{board[3]}</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(4)}>
-      <Text style={styles.text}>{board[4]}</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(5)}>
-      <Text style={styles.text}>{board[5]}</Text>
-    </TouchableOpacity>
   </View>
-  <View style={styles.row}>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(6)}>
-      <Text style={styles.text}>{board[6]}</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(7)}>
-      <Text style={styles.text}>{board[7]}</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(8)}>
-      <Text style={styles.text}>{board[8]}</Text>
-    </TouchableOpacity>
-  </View>
-</View>
   );
   };
 
@@ -129,23 +145,38 @@ const GameBoard = () => {
   
 
 const styles = StyleSheet.create({
+
+  gameBoard: {
+    position: "relative",
+    borderRadius: 15,
+    backgroundColor: "#003190",
+    flex: 1,
+    width: "100%",
+    height: 823,
+    overflow: "hidden",
+  },
+
   container: { 
     flex: 1,
     backgroundColor: '#001848',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
   },
-  rectangleView: {
+  groupItem: {
     position: "absolute",
-    marginTop : 10,
-    marginLeft: 10,
+    top: 0,
+    left: 0,
     borderRadius: 15,
     backgroundColor: "#0086f4",
     width: 100,
     height: 100,
   },
-  o1: {
-    
+  o: {
+    position: "absolute",
+    marginTop: -35,
+    marginLeft: -35,
+    top: "50%",
+    left: "50%",
     fontSize: 70,
     lineHeight: 84,
     fontStyle: "italic",
@@ -158,11 +189,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 70,
     height: 70,
-    marginLeft: 15,
-    marginTop: 12,
+  },
+  rectangleGroup: {
+    position: "absolute",
+    top: 14,
+    left: 29,
+    width: 100,
+    height: 100,
   },
   player1: {
-    
+    position: "absolute",
+    marginTop: 32,
+    marginLeft: -62,
+    top: "50%",
+    left: "50%",
     fontSize: 20,
     lineHeight: 24,
     fontStyle: "italic",
@@ -173,37 +213,99 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 30,
     width: 125,
     height: 33,
   },
-  rectangleGroup: {
+  groupContainer: {
+    position: "absolute",
+    top: 120,
+    left: 15,
     borderRadius: 15,
-    padding: 5,
     backgroundColor: "#d9d9d9",
-    width: 120,
-    height: 150,
-    alignSelf: "flex-start",
-    marginLeft: 20,
+    width: 156,
+    height: 166,
   },
 
-  backToMenu: {
-    fontSize: 15,
-    lineHeight: 8,
-    fontWeight: "700",
-    fontFamily: "Jura-Bold",
-    color: "#003190",
+  groupItemX: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    borderRadius: 15,
+    backgroundColor: "#0086f4",
+    width: 100,
+    height: 100,
+  },
+  X: {
+    position: "absolute",
+    marginTop: -35,
+    marginLeft: -35,
+    top: "50%",
+    left: "50%",
+    fontSize: 70,
+    lineHeight: 84,
+    fontStyle: "italic",
+    fontWeight: "800",
+    fontFamily: "Inter-ExtraBold",
+    color: "#e94141",
     textAlign: "center",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: 137,
-    height: 27,
+    width: 70,
+    height: 70,
   },
-  backToMenuWrapper: {
-    marginTop: 10,
+  rectangleGroupX: {
+    position: "absolute",
+    top: 14,
+    left: 29,
+    width: 100,
+    height: 100,
+  },
+  player2: {
+    position: "absolute",
+    marginTop: 32,
+    marginLeft: -62,
+    top: "50%",
+    left: "50%",
+    fontSize: 20,
+    lineHeight: 24,
+    fontStyle: "italic",
+    fontWeight: "800",
+    fontFamily: "Inter-ExtraBold",
+    color: "#000",
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 125,
+    height: 33,
+  },
+  groupContainerX: {
+    position: "absolute",
+    top: 120,
+    right: 15,
+    borderRadius: 15,
+    backgroundColor: "#d9d9d9",
+    width: 156,
+    height: 166,
+  },
+
+  backToMenuBtn: {
+    color: "#003190",
+    fontSize: 15,
+    fontWeight: "700",
+    fontFamily: "Jura-Bold",
+  },
+  backToMenuBtn1: {
+    right: 20,
+    left: "50%",
+    marginLeft: -0.5,
+    marginTop: -393.5,
+    top: "50%",
+    position: "absolute",
+  },
+  backToMenuBtn2: {
     borderRadius: 50,
-    backgroundColor: "#f7b731",
     width: 195,
     height: 41,
   },
@@ -211,7 +313,7 @@ const styles = StyleSheet.create({
   frame6: {
     position: "absolute",
     top: 18,
-    left: 18,
+    left: 0,
     width: 389,
     height: 41,
     overflow: "hidden",
@@ -230,8 +332,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  cell : onPress = {
+    flex: 1,
+    margin: 6,
+    aspectRatio: 1.1,
+    backgroundColor: "#0086f4",
+    borderColor: '#ccc',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   text: {
     fontSize: 36,
+    color: "#e94141",
     fontWeight: 'bold',
   },
   winnerText: {
